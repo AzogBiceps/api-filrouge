@@ -1,0 +1,19 @@
+version: '3.7'
+
+volumes:
+  db_date: {}
+
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db_date:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  adminer:
+    image: adminer:latest
+    ports:
+      - 8080:8080
