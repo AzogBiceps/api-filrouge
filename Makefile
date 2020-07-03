@@ -12,3 +12,6 @@ down:
 stop:
 	docker-compose kill
 	docker-compose rm -f
+
+fixtures:
+	bin/console doctrine:fixtures:load
