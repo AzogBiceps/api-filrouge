@@ -186,7 +186,7 @@ class AppFixtures extends Fixture
                     ]
                 ],
                 [
-                    'context' => 'Un designer vous soumet l\'idée qu\'il a concernant un nouveau logo pour la Nasa',
+                    'context' => 'Un designer vous soumet l\'idée qu\'il a concernant un nouveau logo pour la NASA',
                     'choices' => [
                         [
                             'label' => 'C\'est vrai qu\'il mériterait un petit coup de neuf',
@@ -282,7 +282,7 @@ class AppFixtures extends Fixture
                             'search' => -30,
                         ],
                         [
-                            'label' => 'Proposer à des chercheurs de faire des conférences ',
+                            'label' => 'Proposer à des chercheurs de faire des conférences',
                             'money' => -10,
                             'opinion' => 10,
                             'search' => 20,
@@ -310,7 +310,7 @@ class AppFixtures extends Fixture
                     'context' => 'Une rumeur circule disant que la Chine effectue des lancements de fusées dans l\'Océan Pacifique.',
                     'choices' => [
                         [
-                            'label' => 'Il ne faut pas se faire distancer, lancer aussi des tests à tire-larigot',
+                            'label' => 'Il ne faut pas se faire distancer, lancer des tests à tire-larigot',
                             'money' => -30,
                             'opinion' => 20,
                             'search' => 20,
@@ -327,7 +327,7 @@ class AppFixtures extends Fixture
                     'context' => 'Un des astronaute tombe malade avant un lancement.',
                     'choices' => [
                         [
-                            'label' => 'Tenter de le soigner dans la panique ',
+                            'label' => 'Tenter de le soigner dans la panique',
                             'money' => -10,
                             'opinion' => 10,
                             'search' => 10,
@@ -341,7 +341,7 @@ class AppFixtures extends Fixture
                     ]
                 ],
                 [
-                    'context' => 'Vos astronautes semblent ne pas être totalement serein quant à leurs capacités',
+                    'context' => 'Vos astronautes semblent ne pas être totalement sereins quant à leurs capacités.',
                     'choices' => [
                         [
                             'label' => 'Leur proposer de nouveaux entraînements',
@@ -513,7 +513,7 @@ class AppFixtures extends Fixture
                     ]
                 ],
                 [
-                    'context' => 'Un chercheur vient vous partager ses inquiétudes quant au manque d\'effectif dans ce secteur',
+                    'context' => 'Un chercheur vient vous partager ses inquiétudes quant au manque d\'effectif dans ce secteur.',
                     'choices' => [
                         [
                             'label' => 'Recruter et former un nouveau groupe de rechercheurs sur de l\'ingénérie',
@@ -530,7 +530,7 @@ class AppFixtures extends Fixture
                     ]
                 ],
                 [
-                    'context' => 'Un enfant au discours sibyllin vient dans vos bureaux à la recherche d\'un travail. Il prétend être grandement diplomé et désire vivre le "American Dream"',
+                    'context' => 'Un enfant au discours sibyllin vient dans vos bureaux à la recherche d\'un travail. Il prétend être grandement diplomé et désire vivre le "American Dream".',
                     'choices' => [
                         [
                             'label' => 'Recruter ce p\'tit gars, il peut pas être méchant',
@@ -547,7 +547,7 @@ class AppFixtures extends Fixture
                     ]
                 ],
                 [
-                    'context' => 'Vos ingénieurs sont sur le point de découvrir un nouveau moyen de quitter l\'atmosphère',
+                    'context' => 'Vos ingénieurs sont sur le point de découvrir un nouveau moyen de quitter l\'atmosphère.',
                     'choices' => [
                         [
                             'label' => 'Financer la recherche',
@@ -641,7 +641,7 @@ class AppFixtures extends Fixture
                             'search' => -20,
                         ],
                         [
-                            'label' => 'Evidemment, pourquoi n\'y avons nous pas pensé avant ! ',
+                            'label' => 'Evidemment, pourquoi n\'y avons nous pas pensé avant !',
                             'money' => 20,
                             'opinion' => -30,
                             'search' => 20,
@@ -666,7 +666,7 @@ class AppFixtures extends Fixture
                     ]
                 ],
                 [
-                    'context' => 'Un groupe de chercheurs pouvant s\'apparenter à un syndicat vous transmet leur mécontentement face à leur "trop faible salaire"',
+                    'context' => 'Un groupe de chercheurs pouvant s\'apparenter à un syndicat vous transmet leur mécontentement face à leur "trop faible salaire".',
                     'choices' => [
                         [
                             'label' => 'Céder et augmenter la part dédié à la recherche',
@@ -683,7 +683,7 @@ class AppFixtures extends Fixture
                     ]
                 ],
                 [
-                    'context' => 'Vos employés demandent de meilleures conditions de travail : un meilleur salaire et de meilleurs horaires',
+                    'context' => 'Vos employés demandent de meilleures conditions de travail : un meilleur salaire et de meilleurs horaires.',
                     'choices' => [
                         [
                             'label' => 'Accepter leurs demandes et en profiter pour améliorer la communication interne',
