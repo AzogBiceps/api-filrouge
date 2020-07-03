@@ -7,9 +7,10 @@ use App\Repository\CardRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(normalizationContext={"groups"={"card"}})
  * @ORM\Entity(repositoryClass=CardRepository::class)
  */
 class Card
@@ -22,25 +23,26 @@ class Card
     private $id;
 
     /**
+     * @var Category Catégorie de la carte
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="cards")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"card"})
      */
     private $category;
 
     /**
+     * @var string Intitulé de la carte
      * @ORM\Column(type="text")
+     * @Groups({"card"})
      */
     private $context;
 
     /**
+     * @var Choice Les différentes réponses disponibles
      * @ORM\OneToMany(targetEntity=Choice::class, mappedBy="card", orphanRemoval=true)
+     * @Groups({"card"})
      */
     private $choices;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Consequence::class, mappedBy="Card", cascade={"persist", "remove"})
-     */
-    private $consequence;
 
     public function __construct()
     {
@@ -102,24 +104,6 @@ class Card
             if ($choice->getCard() === $this) {
                 $choice->setCard(null);
             }
-        }
-
-        return $this;
-    }
-
-    public function getConsequence(): ?Consequence
-    {
-        return $this->consequence;
-    }
-
-    public function setConsequence(?Consequence $consequence): self
-    {
-        $this->consequence = $consequence;
-
-        // set (or unset) the owning side of the relation if necessary
-        $newCard = null === $consequence ? null : $this;
-        if ($consequence->getCard() !== $newCard) {
-            $consequence->setCard($newCard);
         }
 
         return $this;

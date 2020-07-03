@@ -7,6 +7,7 @@ use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource()
@@ -22,11 +23,14 @@ class Category
     private $id;
 
     /**
+     * @var string Nom de la catégorie
      * @ORM\Column(type="string", length=255)
+     * @Groups({"card"})
      */
     private $name;
 
     /**
+     * @var Card Cartes de cette catégorie
      * @ORM\OneToMany(targetEntity=Card::class, mappedBy="category", orphanRemoval=true)
      */
     private $cards;

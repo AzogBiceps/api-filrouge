@@ -2,10 +2,13 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ConsequenceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=ConsequenceRepository::class)
  */
 class Consequence
@@ -18,76 +21,98 @@ class Consequence
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity=Card::class, inversedBy="consequence", cascade={"persist", "remove"})
-     */
-    private $Card;
-
-    /**
+     * @Groups("card")
+     * @var string Label de la conséquence
      * @ORM\Column(type="string", length=255)
      */
     private $label;
 
     /**
+     * @Groups("card")
+     * @var string Contexte globale de la conséquence
      * @ORM\Column(type="text")
      */
     private $context;
 
     /**
+     * @Groups("card")
+     * @var string Contexte si succès de la conséquence
      * @ORM\Column(type="string", length=255)
      */
     private $contextSuccess;
 
     /**
+     * @Groups("card")
+     * @var string Texte du bouton si succès
      * @ORM\Column(type="string", length=255)
      */
     private $buttonTextSuccess;
 
     /**
+     * @Groups("card")
+     * @var string Image si succès
      * @ORM\Column(type="string", length=255)
      */
     private $imageSuccess;
 
     /**
+     * @var int Impact sur l'argent si succès
      * @ORM\Column(type="integer")
      */
     private $moneySuccess;
 
     /**
+     * @Groups("card")
+     * @var int Impact sur l'opinion publique si succès
      * @ORM\Column(type="integer")
      */
     private $opinionSuccess;
 
     /**
+     * @Groups("card")
+     * @var int Impact sur la recherche si succès
      * @ORM\Column(type="integer")
      */
     private $searchSuccess;
 
     /**
+     * @Groups("card")
+     * @var string Contexte si non succès de la conséquence
      * @ORM\Column(type="string", length=255)
      */
     private $contextFail;
 
     /**
+     * @Groups("card")
+     * @var string Texte du bouton si non succès
      * @ORM\Column(type="string", length=255)
      */
     private $buttonTextFail;
 
     /**
+     * @Groups("card")
+     * @var string Image si non succès
      * @ORM\Column(type="string", length=255)
      */
     private $imageFail;
 
     /**
+     * @Groups("card")
+     * @var int Impact sur l'argent si non succès
      * @ORM\Column(type="integer")
      */
     private $moneyFail;
 
     /**
+     * @Groups("card")
+     * @var int Impact sur l'opinion publique si non succès
      * @ORM\Column(type="integer")
      */
     private $opinionFail;
 
     /**
+     * @Groups("card")
+     * @var int Impact sur la recherche si non succès
      * @ORM\Column(type="integer")
      */
     private $searchFail;
@@ -95,18 +120,6 @@ class Consequence
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getCard(): ?Card
-    {
-        return $this->Card;
-    }
-
-    public function setCard(?Card $Card): self
-    {
-        $this->Card = $Card;
-
-        return $this;
     }
 
     public function getLabel(): ?string
