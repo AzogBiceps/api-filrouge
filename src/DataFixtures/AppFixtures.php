@@ -7,6 +7,7 @@ use App\Entity\Choice;
 use App\Entity\Consequence;
 use App\Entity\Game;
 use App\Entity\StepCard;
+use App\Entity\StepTutorial;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Category;
@@ -1005,6 +1006,58 @@ class AppFixtures extends Fixture
             }
 
             $manager->persist($sCard);
+        }
+
+        $data = [
+            [
+                'label' => 'Cartes',
+                'step' => 1,
+                'text' => 'Une carte est composée de deux parties.'
+            ],
+            [
+                'label' => 'Cartes',
+                'step' => 2,
+                'text' => 'La partie contextuelle donnant des informations.'
+            ],
+            [
+                'label' => 'Cartes',
+                'step' => 3,
+                'text' => 'Et les différents choix. Glissez la carte d’un côté ou cliquez sur le bouton pour faire votre choix.'
+            ],
+            [
+                'label' => 'Jauges',
+                'step' => 1,
+                'text' => 'Vos choix impactent 3 jauges. Votre argent, l’opinion publique et votre niveau de recherche.'
+            ],
+            [
+                'label' => 'Jauges',
+                'step' => 2,
+                'text' => 'Si l’une d’elles tombe à zéro, vous perdez la partie.'
+            ],
+            [
+                'label' => 'Calendrier',
+                'step' => 1,
+                'text' => 'Si l’une d’elles tombe à zéro, vous perdez la partie.'
+            ],
+            [
+                'label' => 'Timeline',
+                'step' => 1,
+                'text' => 'Elle indique votre position (le vaisseau) par rapport à vos objectifs.'
+            ],
+            [
+                'label' => 'Timeline',
+                'step' => 2,
+                'text' => 'Chaque saisons, votre avancement est linéaire.'
+            ],
+        ];
+
+        foreach ($data as $step) {
+            $sTutorial = new StepTutorial();
+            $sTutorial->setLabel($step['label']);
+            $sTutorial->setStep($step['step']);
+            $sTutorial->setText($step['text']);
+
+            $manager->persist($sTutorial);
         }
 
         $manager->flush();
