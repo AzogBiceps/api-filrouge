@@ -19,6 +19,7 @@ class Card
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"card"})
      */
     private $id;
 
