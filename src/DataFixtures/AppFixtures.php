@@ -14,6 +14,110 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $data = [
+            'Bienvenue' => [
+                [
+                        'context' => 'Vous incarnez le programme spatial américain. Votre mission est de dépasser l’URSS et faire le premier pas sur la Lune. Bonne chance !"',
+                        'choices' => [
+                            [
+                                'label' => 'Allez c\'est parti',
+                                'money' => 0,
+                                'opinion' => 0,
+                                'search' => 0,
+                            ],
+                            [
+                                'label' => 'Génial, écrasons les communistes',
+                                'money' => 0,
+                                'opinion' => 0,
+                                'search' => 0,
+                            ]
+                        ],
+                ]
+            ],
+            'Économie' => [
+                [
+                    'context' => 'La NASA vient d’être créée, l’État investit des milions dans la course à la conquête spatiale.',
+                    'choices' => [
+                        [
+                            'label' => 'Vive la mère patrie',
+                            'money' => 20,
+                            'opinion' => 0,
+                            'search' => 0,
+                        ],
+                        [
+                            'label' => 'Direction la Lune',
+                            'money' => 20,
+                            'opinion' => 0,
+                            'search' => 0,
+                        ]
+                    ]
+                ],
+                [
+                    'context' => 'Le bilan est tombé, votre programme dispose d\'un bonus économique ce trimestre.',
+                    'choices' => [
+                        [
+                            'label' => 'Soutenir vos scientifiques',
+                            'money' => 30,
+                            'opinion' => -20,
+                            'search' => 20,
+                        ],
+                        [
+                            'label' => 'Profiter de cette occasion pour passer à la radio',
+                            'money' => 30,
+                            'opinion' => 20,
+                            'search' => -20,
+                        ]
+                    ]
+                ],
+                [
+                    'context' => 'Suite aux bons résultats des mois précédents, une avance vous est faite.',
+                    'choices' => [
+                        [
+                            'label' => 'Donner un petit coup de pouce à vos chercheurs, ils l\'ont bien mérités',
+                            'money' => 30,
+                            'opinion' => -20,
+                            'search' => 20,
+                        ],
+                        [
+                            'label' => 'Profiter de cette occasion et contacter des journalistes pour écrire un article dans la presse',
+                            'money' => 30,
+                            'opinion' => 20,
+                            'search' => -20,
+                        ]
+                    ]
+                ],
+                [
+                    'context' => 'Un chercheur au fort accent d\'europe de l\'est vous propose d\'améliorer votre carburant. Prenez-vous le risque ?',
+                    'choices' => [
+                        [
+                            'label' => 'Lui faire confiance et investir',
+                            'money' => -30,
+                            'opinion' => 0,
+                            'search' => 0,
+                            'consequence' => [
+                                'context' => 'Vous le payez',
+                                'success' => [
+                                    'context' => 'C\'est un honnête chercheur, votre investissement est remboursé et la recherche avance',
+                                    'money' => 30,
+                                    'opinion' => 10,
+                                    'search' => 30,
+                                ],
+                                'failure' => [
+                                    'context' => 'C\'est un espion de l\'URSS qui vous a arnaqué',
+                                    'money' => 0,
+                                    'opinion' => -10,
+                                    'search' => 0,
+                                ]
+                            ]
+                        ],
+                        [
+                            'label' => 'A bas les communistes',
+                            'money' => 0,
+                            'opinion' => 0,
+                            'search' => 0,
+                        ]
+                    ]
+                ],
+            ],
             'Communication' => [
                 [
                     'context' => 'Des doutes dans l\'opinion public quant à vos compétences commencent à émerger. Vos recherches sont de plus en plus questionnées et contestées.',
@@ -388,74 +492,6 @@ class AppFixtures extends Fixture
                             'money' => 10,
                             'opinion' => -20,
                             'search' => -20,
-                        ]
-                    ]
-                ],
-            ],
-            'Économie' => [
-                [
-                    'context' => 'Le bilan est tombé, votre programme dispose d\'un bonus économique ce trimestre.',
-                    'choices' => [
-                        [
-                            'label' => 'Soutenir vos scientifiques',
-                            'money' => 30,
-                            'opinion' => -20,
-                            'search' => 20,
-                        ],
-                        [
-                            'label' => 'Profiter de cette occasion pour passer à la radio',
-                            'money' => 30,
-                            'opinion' => 20,
-                            'search' => -20,
-                        ]
-                    ]
-                ],
-                [
-                    'context' => 'Suite aux bons résultats des mois précédents, une avance vous est faite.',
-                    'choices' => [
-                        [
-                            'label' => 'Donner un petit coup de pouce à vos chercheurs, ils l\'ont bien mérités',
-                            'money' => 30,
-                            'opinion' => -20,
-                            'search' => 20,
-                        ],
-                        [
-                            'label' => 'Profiter de cette occasion et contacter des journalistes pour écrire un article dans la presse',
-                            'money' => 30,
-                            'opinion' => 20,
-                            'search' => -20,
-                        ]
-                    ]
-                ],
-                [
-                    'context' => 'Un chercheur au fort accent d\'europe de l\'est vous propose d\'améliorer votre carburant. Prenez-vous le risque ?',
-                    'choices' => [
-                        [
-                            'label' => 'Lui faire confiance et investir',
-                            'money' => -30,
-                            'opinion' => 0,
-                            'search' => 0,
-                            'consequence' => [
-                                'context' => 'Vous le payez',
-                                'success' => [
-                                    'context' => 'C\'est un honnête chercheur, votre investissement est remboursé et la recherche avance',
-                                    'money' => 30,
-                                    'opinion' => 10,
-                                    'search' => 30,
-                                ],
-                                'failure' => [
-                                    'context' => 'C\'est un espion de l\'URSS qui vous a arnaqué',
-                                    'money' => 0,
-                                    'opinion' => -10,
-                                    'search' => 0,
-                                ]
-                            ]
-                        ],
-                        [
-                            'label' => 'A bas les communistes',
-                            'money' => 0,
-                            'opinion' => 0,
-                            'search' => 0,
                         ]
                     ]
                 ],
