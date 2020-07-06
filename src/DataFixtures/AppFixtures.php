@@ -5,6 +5,8 @@ namespace App\DataFixtures;
 use App\Entity\Card;
 use App\Entity\Choice;
 use App\Entity\Consequence;
+use App\Entity\Game;
+use App\Entity\StepCard;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Category;
@@ -13,6 +15,7 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+        // cards
         $data = [
             'Bienvenue' => [
                 [
@@ -894,8 +897,115 @@ class AppFixtures extends Fixture
             }
             $manager->persist($categorie);
         }
-        // $product = new Product();
-        // $manager->persist($product);
+
+        $manager->flush();
+
+        // step cards
+        $data = [
+            [
+                'stepSeason' => 'Printemps 1961',
+                'label' => 'C\'est un grand jour !',
+                'name' => 'Vous êtes sur le point d\'envoyer le premier homme dans l\'espace.',
+                'win' => [
+                    'label' => 'La mission est un succès !',
+                    'message' => 'Vous avez triomphé ! Les États-Unis sont les premiers à envoyer un humain dans l’espace. Vous affirmez votre supériorité face à l’URSS.',
+                    'picture' => 'newspaper_usa.png',
+                    'money' => 5,
+                    'opinion' => 5,
+                    'search' => 5,
+                ],
+                'loose' => [
+                    'label' => 'Vous échouez et l’URSS vous devance',
+                    'message' => 'L’URSS vous domine, Youri Gargarine devient le premier homme envoyé dans l’espace lors de la mission Vostok 1.',
+                    'picture' => 'newspaper_urss.png',
+                    'money' => -5,
+                    'opinion' => -5,
+                    'search' => -5,
+                ],
+                'game' => [
+                    'title' => 'Le premier vol habité par un être humain',
+                    'information' => 'Guidez votre vaisseau à travers les astéroïdes, quittez l’atmosphère et soyez le premier à envoyer un homme dans l’espace.',
+                    'rules' => 'Glissez votre doigt de gauche à droite pour contrôler votre vaisseau.',
+                ]
+            ],
+            [
+                'stepSeason' => 'Printemps 1965',
+                'label' => 'C\'est un grand jour !',
+                'name' => 'Evenement 2',
+                'win' => [
+                    'label' => 'La mission est un succès !',
+                    'message' => 'Félicitations événement 2 réussi !',
+                    'picture' => 'newspaper_usa.png',
+                    'money' => 10,
+                    'opinion' => 10,
+                    'search' => 10,
+                ],
+                'loose' => [
+                    'label' => 'Vous échouez et l’URSS vous devance',
+                    'message' => 'Aie, événement 2 raté',
+                    'picture' => 'newspaper_urss.png',
+                    'money' => -10,
+                    'opinion' => -10,
+                    'search' => -10,
+                ]
+            ],
+            [
+                'stepSeason' => 'Été 1969',
+                'label' => 'C\'est un grand jour !',
+                'name' => 'Premier pas sur la lune',
+                'win' => [
+                    'label' => 'La mission est un succès !',
+                    'message' => 'Gagné ! Premier pas posé avant la l\'URSS, belle performance !',
+                    'picture' => 'newspaper_usa.png',
+                    'money' => 0,
+                    'opinion' => 0,
+                    'search' => 0,
+                ],
+                'loose' => [
+                    'label' => 'Vous échouez et l’URSS vous devance',
+                    'message' => 'Perdu ! L\'URSS est parvenu à faire le premier pas sur la lune avant vous.',
+                    'picture' => 'newspaper_urss.png',
+                    'money' => 0,
+                    'opinion' => 0,
+                    'search' => 0,
+                ]
+            ],
+        ];
+
+        foreach ($data as $stepCard) {
+            $sCard = new StepCard();
+
+            $sCard->setStepSeason($stepCard['stepSeason']);
+            $sCard->setLabel($stepCard['label']);
+            $sCard->setName($stepCard['name']);
+
+            $sCard->setLabelWin($stepCard['win']['label']);
+            $sCard->setMessageWin($stepCard['win']['message']);
+            $sCard->setPictureWin($stepCard['win']['picture']);
+            $sCard->setMoneyWin($stepCard['win']['money']);
+            $sCard->setOpinionWin($stepCard['win']['opinion']);
+            $sCard->setSearchWin($stepCard['win']['search']);
+
+            $sCard->setLabelLoose($stepCard['loose']['label']);
+            $sCard->setMessageLoose($stepCard['loose']['message']);
+            $sCard->setPictureLoose($stepCard['loose']['picture']);
+            $sCard->setMoneyLoose($stepCard['loose']['money']);
+            $sCard->setOpinionLoose($stepCard['loose']['opinion']);
+            $sCard->setSearchLoose($stepCard['loose']['search']);
+
+            if (isset($stepCard['game'])) {
+                $game = new Game();
+
+                $game->setTitle($stepCard['game']['title']);
+                $game->setInformation($stepCard['game']['information']);
+                $game->setRules($stepCard['game']['rules']);
+
+                $manager->persist($game);
+                $sCard->setGame($game);
+            }
+
+            $manager->persist($sCard);
+        }
 
         $manager->flush();
     }
