@@ -56,6 +56,7 @@ class Consequence
     private $imageSuccess;
 
     /**
+     * @Groups("card")
      * @var int Impact sur l'argent si succès
      * @ORM\Column(type="integer")
      */
