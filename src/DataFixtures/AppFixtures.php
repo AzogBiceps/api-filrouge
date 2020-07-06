@@ -114,7 +114,7 @@ class AppFixtures extends Fixture
                             ]
                         ],
                         [
-                            'label' => 'A bas les communistes',
+                            'label' => 'A bas les communistes !',
                             'money' => 0,
                             'opinion' => 0,
                             'search' => 0,
